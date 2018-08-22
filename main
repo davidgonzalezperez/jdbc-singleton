@@ -34,6 +34,7 @@ String insert4= " insert into account (logeado)"
 		} catch (Exception e2) {
 			// TODO Auto-generated catch block
 			System.out.println("Fail");
+			System.err.println(e2.getMessage());
 		}
     }
     }
