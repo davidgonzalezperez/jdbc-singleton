@@ -1,0 +1,25 @@
+package pruebas;
+
+import java.sql.*;
+
+public class DbConnectSingleton {
+	
+	static Connection conn= null;
+	
+	private DbConnectSingleton() {
+		
+	}
+	public static Connection getConnection() {
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection("jdbc:mysql://localhost/hola","root","");
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return conn;
+	}
+
+}
