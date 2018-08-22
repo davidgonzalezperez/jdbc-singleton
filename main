@@ -1,0 +1,39 @@
+package pruebas;
+import java.sql.*;
+public class lamain { 
+public static void main(String[] args) {
+		// TODO Auto-generated method stub
+String insert4= " insert into account (logeado)"
+		        + " values (?)";
+		String get4 = "select * from accounts";
+		
+		
+		
+		Connection dbcs = DbConnectSingleton.getConnection();
+		try {
+			
+			// aqui hacemos un insert a la tabla que indica la query insert4
+			PreparedStatement conexion1 = dbcs.prepareStatement(insert4);
+			conexion1.setString(1, "adios");
+			conexion1.execute();
+			System.out.println("todo ok");
+			
+			
+			//aqui hacemos un get a la tabla que indica get4
+			
+			Statement conexion = dbcs.createStatement();
+			
+		ResultSet rs = conexion.executeQuery(get4);
+			
+		while(rs.next()) {
+				System.out.println(rs.getString("login")+" -> "+rs.getString("Password"));
+		}
+		conexion.close();
+		conexion1.close();
+		
+		} catch (Exception e2) {
+			// TODO Auto-generated catch block
+			System.out.println("Fail");
+		}
+    }
+    }
